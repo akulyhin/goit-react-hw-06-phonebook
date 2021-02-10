@@ -9,15 +9,19 @@ const initialState = [
   { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
 ];
 
+const onAddTask = (state, action) => [...state, action.payload];
+const onDeleteTask = (state, action) => [
+  ...state.filter((item) => item.id !== action.payload),
+];
+const onFilter = (state, action) => action.payload;
+
 const contactsReducer = createReducer([...initialState], {
-  [ADDTASK]: (state, action) => [...state, action.payload],
-  [REMOVETASKS]: (state, action) => [
-    ...state.filter((item) => item.id !== action.payload),
-  ],
+  [ADDTASK]: onAddTask,
+  [REMOVETASKS]: onDeleteTask,
 });
 
 const filterReducer = createReducer("", {
-  [SETFILTER]: (state, action) => action.payload,
+  [SETFILTER]: onFilter,
 });
 
 const reducer = combineReducers({
