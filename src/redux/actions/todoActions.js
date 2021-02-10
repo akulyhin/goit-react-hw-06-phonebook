@@ -1,25 +1,16 @@
-import { ADDTASK, REMOVETASKS, SETFILTER } from "../constants/todoConstants"
-import {v4 as uuiv4} from 'uuid';
+import { createAction } from "@reduxjs/toolkit";
+import { ADDTASK, REMOVETASKS, SETFILTER } from "../constants/todoConstants";
+import { v4 as uuiv4 } from "uuid";
 
-const addTask = (task) => {
-    return {
-        type: ADDTASK,
-        payload: {...task, id: uuiv4()}
-    }
-}
+const addTask = createAction(ADDTASK, (task) => ({
+  payload: {
+    ...task,
+    id: uuiv4(),
+  },
+}));
 
-const removeTask = (id) => {
-    return {
-        type: REMOVETASKS,
-        payload: id
-    }
-}
+const removeTask = createAction(REMOVETASKS);
 
-const setFilter = (value) => {
-    return {
-        type: SETFILTER,
-        payload: value
-    }
-}
+const setFilter = createAction(SETFILTER);
 
-export {addTask, removeTask, setFilter}
+export { addTask, removeTask, setFilter };

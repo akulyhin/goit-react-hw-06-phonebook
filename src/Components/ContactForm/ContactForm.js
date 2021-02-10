@@ -7,11 +7,6 @@ import Alert from "../Alert/Alert";
 import { CSSTransition } from "react-transition-group";
 import AlertAnimation from "../Animation/Alert.module.css";
 
-// class ContactForm extends Component {
-  // state = {
-  //   name: "",
-  //   number: "",
-  // };
 
   const initialState = {
     name: '',
@@ -25,7 +20,6 @@ const [state, setState] = useState({ ...initialState})
 
  const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(contacts.some(item=>item.name === state.name))
   if(contacts.some(item=>item.name.toLowerCase() === state.name.toLowerCase())){
     setState(prev=>({...prev, alert: true }))
     setTimeout(()=> setState(prev=>({...prev, alert: false })), 3000)
@@ -41,8 +35,7 @@ const [state, setState] = useState({ ...initialState})
     const { name, value } = e.target;
     setState(prev =>({...prev, [name]: value }));
   };
-
-    // const { name, number } = this.state;
+  
     return (
       <>
            <CSSTransition

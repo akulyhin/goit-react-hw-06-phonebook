@@ -1,12 +1,11 @@
-import {combineReducers, createStore} from 'redux';
-import {composeWithDevTools} from 'redux-devtools-extension';
-import { ADDTASK, REMOVETASKS, SETFILTER } from './constants/todoConstants';
+import { configureStore } from '@reduxjs/toolkit';
 import reducer from './reducers/contactsReducer';
 
 
+const store = configureStore({
+    reducer: {
+        contacts: reducer
+    }
+});
 
-const rootReducer = combineReducers({
-    contacts: reducer,
-})
-
-export const store = createStore(rootReducer, composeWithDevTools());
+export default store;
